@@ -61,13 +61,13 @@ afterEvaluate {
 
                 // Mostly self-explanatory metadata
                 pom {
-                    name = "compose-otp-view"
+                    name = "Speld"
                     description = 'Android Compose OTP View'
-                    url = 'https://github.com/yogeshpaliyal/Android-Compose-OTP-View'
+                    url = 'https://github.com/yogeshpaliyal/speld'
                     licenses {
                         license {
                             name = 'MIT License'
-                            url = 'https://github.com/yogeshpaliyal/Android-Compose-OTP-View/blob/master/LICENSE'
+                            url = 'https://github.com/yogeshpaliyal/speld/blob/master/LICENSE'
                         }
                     }
                     developers {
@@ -82,9 +82,9 @@ afterEvaluate {
                     // Version control info - if you're using GitHub, follow the
                     // format as seen here
                     scm {
-                        connection = 'scm:git:github.com/yogeshpaliyal/Android-Compose-OTP-View.git'
-                        developerConnection = 'scm:git:ssh://github.com/yogeshpaliyal/Android-Compose-OTP-View.git'
-                        url = 'https://github.com/yogeshpaliyal/Android-Compose-OTP-View'
+                        connection = 'scm:git:github.com/yogeshpaliyal/speld.git'
+                        developerConnection = 'scm:git:ssh://github.com/yogeshpaliyal/speld.git'
+                        url = 'https://github.com/yogeshpaliyal/speld'
                     }
                 }
             }
