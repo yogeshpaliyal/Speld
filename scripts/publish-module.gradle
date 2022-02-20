@@ -1,0 +1,102 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+task androidSourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    if (project.plugins.findPlugin("com.android.library")) {
+        // For Android libraries
+        from android.sourceSets.main.java.srcDirs
+        from android.sourceSets.main.kotlin.srcDirs
+    } else {
+        // For pure Kotlin libraries, in case you have them
+        from sourceSets.main.java.srcDirs
+        from sourceSets.main.kotlin.srcDirs
+    }
+}
+
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    options.charSet = 'UTF-8'
+    failOnError  false
+    source = android.sourceSets.main.java.sourceFiles
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives androidSourcesJar
+}
+
+group = PUBLISH_GROUP_ID
+version = PUBLISH_VERSION
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                // The coordinates of the library, being set from variables that
+                // we'll set up later
+                groupId PUBLISH_GROUP_ID
+                artifactId PUBLISH_ARTIFACT_ID
+                version PUBLISH_VERSION
+
+                // Two artifacts, the `aar` (or `jar`) and the sources
+                if (project.plugins.findPlugin("com.android.library")) {
+                    from components.release
+                } else {
+                    from components.java
+                }
+
+                artifact androidSourcesJar
+                artifact javadocJar
+
+                // Mostly self-explanatory metadata
+                pom {
+                    name = "compose-otp-view"
+                    description = 'Android Compose OTP View'
+                    url = 'https://github.com/yogeshpaliyal/Android-Compose-OTP-View'
+                    licenses {
+                        license {
+                            name = 'MIT License'
+                            url = 'https://github.com/yogeshpaliyal/Android-Compose-OTP-View/blob/master/LICENSE'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = 'yogeshpaliyal'
+                            name = 'Yogesh Choudhary Paliyal'
+                            email = 'yogeshpaliyal.foss@gmail.com'
+                        }
+                        // Add all other devs here...
+                    }
+
+                    // Version control info - if you're using GitHub, follow the
+                    // format as seen here
+                    scm {
+                        connection = 'scm:git:github.com/yogeshpaliyal/Android-Compose-OTP-View.git'
+                        developerConnection = 'scm:git:ssh://github.com/yogeshpaliyal/Android-Compose-OTP-View.git'
+                        url = 'https://github.com/yogeshpaliyal/Android-Compose-OTP-View'
+                    }
+                }
+            }
+        }
+    }
+}
+
+signing {
+    useInMemoryPgpKeys(
+            rootProject.ext["signing.keyId"],
+            rootProject.ext["signing.key"],
+            rootProject.ext["signing.password"],
+    )
+    sign publishing.publications
+}
