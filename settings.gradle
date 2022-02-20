@@ -6,6 +6,6 @@ dependencyResolutionManagement {
         jcenter() // Warning: this repository is going to shut down soon
     }
 }
-rootProject.name = "Android Compose OTP View"
+rootProject.name = "Speld"
 include ':app'
-include ':composeOtpView'
+include ':speld'
