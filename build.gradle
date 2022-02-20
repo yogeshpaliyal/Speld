@@ -15,7 +15,8 @@ buildscript {
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-        classpath 'io.github.gradle-nexus:publish-plugin:1.1.0'
+        classpath 'com.vanniktech:gradle-maven-publish-plugin:0.18.0'
+
 
     }
 }
@@ -23,8 +24,3 @@ buildscript {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-apply plugin: 'io.github.gradle-nexus.publish-plugin'
-
-// 2: applying separate publishing script
-apply from: "${rootDir}/scripts/publish-root.gradle"
