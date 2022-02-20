@@ -1,20 +1,20 @@
 ![](cover.jpeg)
 
-# AndroidComposeOTPView
+# SPELD
 
-![buildStatus](https://img.shields.io/github/workflow/status/yogeshpaliyal/AndroidComposeOTPView/Java%20CI%20with%20Gradle?style=plastic)
-![latestVersion](https://img.shields.io/github/v/release/yogeshpaliyal/AndroidComposeOTPView)
+![buildStatus](https://img.shields.io/github/workflow/status/yogeshpaliyal/SPELD/Java%20CI%20with%20Gradle?style=plastic)
+![latestVersion](https://img.shields.io/github/v/release/yogeshpaliyal/SPELD)
 <a href="https://twitter.com/yogeshpaliyal" target="_blank">
 <img alt="Twitter: yogeshpaliyal" src="https://img.shields.io/twitter/follow/yogeshpaliyal.svg?style=social" />
 </a>
 
-> OTP View for Jetpack compose
+> Android Compose OTP View
 
 Coming soon
 
 ## 🏗 Project Status
 
-|![](https://i.giphy.com/media/tl9tKCyXYBt6A3GweC/giphy.gif) |
+|![](https://i.giphy.com/media/CwfC5Pv6Rtp66h4coK/giphy.gif) |
 |:--:|
 | Under construction |
 
@@ -59,7 +59,8 @@ Give a ⭐️ if this project helped you!
 
 ## ☑️ TODO
 
-- [ ] Task 1
+- [ ] Solid PIN View
+- [ ] Bordered PIN View
 
 ## 📝 License
 
