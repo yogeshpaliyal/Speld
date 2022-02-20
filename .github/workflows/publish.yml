@@ -1,0 +1,41 @@
+name: Publish
+
+on:
+  release:
+    # We'll run this workflow when a new GitHub release is created
+    types: [released]
+
+jobs:
+  publish:
+    name: Release build and publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+         distribution: adopt
+         java-version: 11
+
+      - name: Grant Gradlew rights
+        run: chmod +x gradlew
+
+        # Builds the release artifacts of the library
+      - name: Release build
+        run: ./gradlew :speld:assembleRelease
+
+      - name: Publish Library
+        run: |
+          echo "Publishing library🚀"
+          ./gradlew publish --no-daemon --no-parallel
+          echo "Published✅"
+          echo "Releasing repository...🚀"
+          ./gradlew closeAndReleaseRepository
+          echo "Released✅"
+        env:
+          ORG_GRADLE_PROJECT_VERSION_NAME: ${{ github.event.release.tag_name }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_KEY }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_PASSWORD }}
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.OSSRH_USERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.OSSRH_PASSWORD }}
