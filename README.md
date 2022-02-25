@@ -12,6 +12,11 @@
 
 Coming soon
 
+## Implementation
+```groovy
+implementation 'com.yogeshpaliyal:speld:0.0.1-alpha01'
+```
+
 ## 🏗 Project Status
 
 |![](https://i.giphy.com/media/CwfC5Pv6Rtp66h4coK/giphy.gif) |
