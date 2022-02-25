@@ -3,7 +3,7 @@
 # SPELD
 
 ![buildStatus](https://img.shields.io/github/workflow/status/yogeshpaliyal/Speld/Publish?style=plastic)
-![latestVersion](https://img.shields.io/github/v/release/yogeshpaliyal/Speld)
+![latestVersion](https://img.shields.io/github/v/tag/yogeshpaliyal/Speld?display_name=tag)
 <a href="https://twitter.com/yogeshpaliyal" target="_blank">
 <img alt="Twitter: yogeshpaliyal" src="https://img.shields.io/twitter/follow/yogeshpaliyal.svg?style=social" />
 </a>
