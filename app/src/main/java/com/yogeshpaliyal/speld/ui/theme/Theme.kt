@@ -1,4 +1,4 @@
-package com.yogeshpaliyal.composeotpview.ui.theme
+package com.yogeshpaliyal.speld.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

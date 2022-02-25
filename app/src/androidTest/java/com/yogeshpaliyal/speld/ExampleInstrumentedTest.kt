@@ -1,4 +1,4 @@
-package com.yogeshpaliyal.composeotpview
+package com.yogeshpaliyal.speld
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

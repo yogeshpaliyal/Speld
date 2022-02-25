@@ -1,4 +1,4 @@
-package com.yogeshpaliyal.composeotpview
+package com.yogeshpaliyal.speld
 
 import org.junit.Test
 

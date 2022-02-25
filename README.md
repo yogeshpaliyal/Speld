@@ -10,12 +10,37 @@
 
 > Android Compose OTP View
 
-Coming soon
+
+![](demo.jpeg)
 
 ## Implementation
 ```groovy
 implementation 'com.yogeshpaliyal:speld:0.0.1-alpha01'
 ```
+
+### Default / Solid Pin View
+```kotlin
+val text = remember { mutableStateOf("") }
+PinInput(value = text.value, obscureText = null) {
+    text.value = it
+}
+```
+
+### Bordered Pin View
+```kotlin
+val text = remember { mutableStateOf("") }
+PinInput(
+    modifier = Modifier.border(
+        BorderStroke(2.dp, Color.Red),
+        shape = RoundedCornerShape(3.dp)
+    ), value = text.value,
+    obscureText = "*",
+    length = 6
+) {
+    text.value = it
+}
+```
+
 
 ## 🏗 Project Status
 
