@@ -11,7 +11,7 @@
 > Android Compose OTP View
 
 
-![](demo.jpeg)
+<img src="demo.png" width="30%" />
 
 ## Implementation
 ```groovy
