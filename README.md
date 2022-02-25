@@ -41,13 +41,6 @@ PinInput(
 }
 ```
 
-
-## 🏗 Project Status
-
-|![](https://i.giphy.com/media/CwfC5Pv6Rtp66h4coK/giphy.gif) |
-|:--:|
-| Under construction |
-
 ## ✍️ Author
 
 👤 **Yogesh Choudhary Paliyal**
@@ -89,8 +82,8 @@ Give a ⭐️ if this project helped you!
 
 ## ☑️ TODO
 
-- [ ] Solid PIN View
-- [ ] Bordered PIN View
+- [x] Solid PIN View
+- [x] Bordered PIN View
 
 ## 📝 License
 
