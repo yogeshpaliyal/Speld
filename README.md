@@ -8,7 +8,7 @@
 <img alt="Twitter: yogeshpaliyal" src="https://img.shields.io/twitter/follow/yogeshpaliyal.svg?style=social" />
 </a>
 
-> Android Compose OTP View
+> Android Compose OTP/PIN View
 
 
 <img src="demo.png" width="30%" />
