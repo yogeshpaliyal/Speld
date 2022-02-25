@@ -2,7 +2,7 @@
 
 # SPELD
 
-![buildStatus](https://img.shields.io/github/workflow/status/yogeshpaliyal/Speld/Java%20CI%20with%20Gradle?style=plastic)
+![buildStatus](https://img.shields.io/github/workflow/status/yogeshpaliyal/Speld/Publish?style=plastic)
 ![latestVersion](https://img.shields.io/github/v/release/yogeshpaliyal/Speld)
 <a href="https://twitter.com/yogeshpaliyal" target="_blank">
 <img alt="Twitter: yogeshpaliyal" src="https://img.shields.io/twitter/follow/yogeshpaliyal.svg?style=social" />
@@ -15,7 +15,7 @@
 
 ## Implementation
 ```groovy
-implementation 'com.yogeshpaliyal:speld:0.0.1-alpha01'
+implementation 'com.yogeshpaliyal:speld:0.0.1-alpha02'
 ```
 
 ### Default / Solid Pin View
