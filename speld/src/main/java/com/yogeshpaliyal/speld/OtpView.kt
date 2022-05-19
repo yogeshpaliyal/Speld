@@ -63,12 +63,14 @@ fun PinInput(
     modifier: Modifier = Modifier,
     length: Int = 5,
     value: String = "",
+    disableKeypad: Boolean = false,
     obscureText: String? = "*",
     onValueChanged: (String) -> Unit
 ) {
     val focusRequester = remember { FocusRequester() }
     val keyboard = LocalSoftwareKeyboardController.current
     TextField(
+        readOnly = disableKeypad,
         value = value,
         onValueChange = {
             if (it.length <= length) {
