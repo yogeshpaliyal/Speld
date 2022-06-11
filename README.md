@@ -35,7 +35,8 @@ PinInput(
         shape = RoundedCornerShape(3.dp)
     ), value = text.value,
     obscureText = "*",
-    length = 6
+    length = 6,
+    disableKeypad = false // Optional
 ) {
     text.value = it
 }
