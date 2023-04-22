@@ -61,6 +61,7 @@ fun OtpCell(
 @Composable
 fun PinInput(
     modifier: Modifier = Modifier,
+    cellModifier: Modifier = Modifier,
     length: Int = 5,
     value: String = "",
     disableKeypad: Boolean = false,
@@ -97,7 +98,7 @@ fun PinInput(
     ) {
         repeat(length) {
             OtpCell(
-                modifier = Modifier
+                modifier = cellModifier
                     .size(width = 45.dp, height = 45.dp)
                     .clip(MaterialTheme.shapes.large)
                     .background(
