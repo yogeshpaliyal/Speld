@@ -112,7 +112,8 @@ fun PinInput(
                 isCursorVisible = value.length == it,
                 obscureText
             )
-            Spacer(modifier = Modifier.size(8.dp))
+            if (it != length - 1)
+                Spacer(modifier = Modifier.size(8.dp))
         }
     }
 }
