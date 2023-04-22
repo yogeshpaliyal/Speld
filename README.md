@@ -30,7 +30,7 @@ PinInput(value = text.value, obscureText = null) {
 ```kotlin
 val text = remember { mutableStateOf("") }
 PinInput(
-    modifier = Modifier.border(
+    cellModifier = Modifier.border(
         BorderStroke(2.dp, Color.Red),
         shape = RoundedCornerShape(3.dp)
     ), value = text.value,
