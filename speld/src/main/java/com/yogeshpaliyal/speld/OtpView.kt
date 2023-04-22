@@ -92,12 +92,12 @@ fun PinInput(
     )
 
     Row(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.Center
     ) {
         repeat(length) {
             OtpCell(
-                modifier = modifier
+                modifier = Modifier
                     .size(width = 45.dp, height = 45.dp)
                     .clip(MaterialTheme.shapes.large)
                     .background(
