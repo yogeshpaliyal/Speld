@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
 
                         // Bordered PIN View
                         PinInput(
-                            modifier = Modifier.border(
+                            cellModifier = Modifier.border(
                                 BorderStroke(2.dp, Color.Red),
                                 shape = RoundedCornerShape(3.dp)
                             ), value = text.value,
