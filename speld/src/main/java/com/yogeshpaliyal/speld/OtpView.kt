@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -66,10 +67,13 @@ fun PinInput(
     value: String = "",
     disableKeypad: Boolean = false,
     obscureText: String? = "*",
+    cursorVisibleOnlyOnFocus: Boolean = true,
     onValueChanged: (String) -> Unit
 ) {
     val focusRequester = remember { FocusRequester() }
     val keyboard = LocalSoftwareKeyboardController.current
+    val isFocused = remember { mutableStateOf(false) }
+
     TextField(
         readOnly = disableKeypad,
         value = value,
@@ -86,7 +90,10 @@ fun PinInput(
         // Hide the text field
         modifier = Modifier
             .size(0.dp)
-            .focusRequester(focusRequester),
+            .focusRequester(focusRequester)
+            .onFocusChanged {
+                isFocused.value = it.isFocused
+            },
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Number
         )
@@ -110,7 +117,7 @@ fun PinInput(
                         keyboard?.show()
                     },
                 value = value.getOrNull(it),
-                isCursorVisible = value.length == it,
+                isCursorVisible = (isFocused.value || !cursorVisibleOnlyOnFocus) && value.length == it,
                 obscureText
             )
             if (it != length - 1)
