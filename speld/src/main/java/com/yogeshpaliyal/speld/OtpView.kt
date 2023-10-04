@@ -118,7 +118,7 @@ fun PinInput(
                 },
                 value = value.getOrNull(it),
                 isCursorVisible = !disableKeypad && (isFocused.value || !cursorVisibleOnlyOnFocus) && value.length == it,
-                obscureText
+                obscureText = obscureText
             )
             if (it != length - 1)
                 Spacer(modifier = spacerModifier)
