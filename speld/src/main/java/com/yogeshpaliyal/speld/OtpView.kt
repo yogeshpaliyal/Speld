@@ -117,7 +117,7 @@ fun PinInput(
                     keyboard?.show()
                 },
                 value = value.getOrNull(it),
-                isCursorVisible = (isFocused.value || !cursorVisibleOnlyOnFocus) && value.length == it,
+                isCursorVisible = !disableKeypad && (isFocused.value || !cursorVisibleOnlyOnFocus) && value.length == it,
                 obscureText
             )
             if (it != length - 1)
