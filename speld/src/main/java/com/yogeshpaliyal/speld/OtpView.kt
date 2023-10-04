@@ -62,7 +62,14 @@ fun OtpCell(
 @Composable
 fun PinInput(
     modifier: Modifier = Modifier,
-    cellModifier: Modifier = Modifier,
+    cellModifier: Modifier = Modifier
+        .size(width = 45.dp, height = 45.dp)
+        .clip(MaterialTheme.shapes.large)
+        .background(
+            MaterialTheme.colors.primary.copy(alpha = 0.1f),
+            shape = RoundedCornerShape(3.dp)
+        ),
+    spacerModifier: Modifier = Modifier.size(8.dp),
     length: Int = 5,
     value: String = "",
     disableKeypad: Boolean = false,
@@ -105,23 +112,16 @@ fun PinInput(
     ) {
         repeat(length) {
             OtpCell(
-                modifier = cellModifier
-                    .size(width = 45.dp, height = 45.dp)
-                    .clip(MaterialTheme.shapes.large)
-                    .background(
-                        MaterialTheme.colors.primary.copy(alpha = 0.1f),
-                        shape = RoundedCornerShape(3.dp)
-                    )
-                    .clickable {
-                        focusRequester.requestFocus()
-                        keyboard?.show()
-                    },
+                modifier = cellModifier.clickable {
+                    focusRequester.requestFocus()
+                    keyboard?.show()
+                },
                 value = value.getOrNull(it),
                 isCursorVisible = (isFocused.value || !cursorVisibleOnlyOnFocus) && value.length == it,
                 obscureText
             )
             if (it != length - 1)
-                Spacer(modifier = Modifier.size(8.dp))
+                Spacer(modifier = spacerModifier)
         }
     }
 }
