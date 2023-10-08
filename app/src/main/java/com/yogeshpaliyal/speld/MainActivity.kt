@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,6 +17,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.yogeshpaliyal.speld.ui.theme.AndroidComposeOTPViewTheme
@@ -30,7 +32,8 @@ class MainActivity : ComponentActivity() {
                     val text = remember { mutableStateOf("") }
                     val length = 5 // Define the length of the PIN here
 
-                    Column(modifier = Modifier.fillMaxSize(),
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
                         Arrangement.Center, Alignment.CenterHorizontally
                     ) {
 
@@ -45,10 +48,18 @@ class MainActivity : ComponentActivity() {
 
                         // Bordered PIN View
                         PinInput(
-                            cellModifier = Modifier.border(
-                                BorderStroke(2.dp, Color.Red),
-                                shape = RoundedCornerShape(3.dp)
-                            ), value = text.value,
+                            cellModifier = Modifier
+                                .size(width = 45.dp, height = 45.dp)
+                                .clip(MaterialTheme.shapes.large)
+                                .background(
+                                    MaterialTheme.colors.primary.copy(alpha = 0.1f),
+                                    shape = RoundedCornerShape(3.dp)
+                                )
+                                .border(
+                                    BorderStroke(2.dp, Color.Red),
+                                    shape = RoundedCornerShape(3.dp)
+                                ),
+                            value = text.value,
                             obscureText = "*",
                             length = length, //Use the number defined here
                             disableKeypad = true, //Do not open the android keypad
@@ -57,7 +68,7 @@ class MainActivity : ComponentActivity() {
                         }
 
                         Spacer(modifier = Modifier.height(20.dp))
-                        
+
                         KeyPad(input = text, length)
 
                     }
@@ -69,9 +80,9 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun KeyPad(input: MutableState<String>, length: Int){
-        val callback = {
-                text: String -> handleButtonClick(text, input, length)
+    fun KeyPad(input: MutableState<String>, length: Int) {
+        val callback = { text: String ->
+            handleButtonClick(text, input, length)
         }
 
         Column(
@@ -115,7 +126,7 @@ class MainActivity : ComponentActivity() {
                 .padding(2.dp, 2.dp)
         ) {
             for (i in texts.indices) {
-                val useIcon = texts[i]=="←"
+                val useIcon = texts[i] == "←"
                 MyButton(
                     text = texts[i],
                     callback = callback,
@@ -155,7 +166,7 @@ class MainActivity : ComponentActivity() {
                     contentDescription = "Favorite",
                     modifier = Modifier.size(ButtonDefaults.IconSize)
                 )
-            }else Text(text)
+            } else Text(text)
         }
     }
 
@@ -168,8 +179,9 @@ class MainActivity : ComponentActivity() {
             "←" -> if (inputTextView.value.isNotEmpty()) {
                 inputTextView.value = inputTextView.value.dropLast(1) // remove last char
             }
+
             "C" -> inputTextView.value = "" // clear all text
-            else -> if(inputTextView.value.length<length) inputTextView.value += txt // handles key input here
+            else -> if (inputTextView.value.length < length) inputTextView.value += txt // handles key input here
         }
     }
 }
