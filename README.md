@@ -15,7 +15,7 @@
 
 ## Implementation
 ```groovy
-implementation 'com.yogeshpaliyal:speld:1.0.1'
+implementation("com.yogeshpaliyal:speld:1.0.1")
 ```
 
 ### Default / Solid Pin View
