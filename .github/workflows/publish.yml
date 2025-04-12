@@ -1,9 +1,15 @@
 name: Publish
 
 on:
-  release:
+#  release:
     # We'll run this workflow when a new GitHub release is created
-    types: [released]
+#    types: [released]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version eg v1.0.0'
+        required: true
+        type: string
 
 jobs:
   publish:
@@ -34,8 +40,21 @@ jobs:
           ./gradlew closeAndReleaseRepository
           echo "Released ✅"
         env:
-          ORG_GRADLE_PROJECT_VERSION_NAME: ${{ github.event.release.tag_name }}
+          ORG_GRADLE_PROJECT_VERSION_NAME: ${{ github.event.inputs.version }}
           ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_KEY }}
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_PASSWORD }}
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.OSSRH_USERNAME }}
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.OSSRH_PASSWORD }}
+
+      - name: Git push tag
+        run: |
+          git tag -a ${{ github.event.inputs.version }} -m "Release version ${{ github.event.inputs.version }}"
+          git push origin ${{ github.event.inputs.version }}
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1.16.0
+        with:
+          tag: "${{ github.event.inputs.version }}"
+          generateReleaseNotes: true
+          commit: "master"
+          makeLatest: true
