@@ -20,6 +20,7 @@ implementation("com.yogeshpaliyal:speld:1.0.3")
 
 ### Default / Solid Pin View
 <img src="solid-bg.png" width="40%" />
+
 ```kotlin
 val text = remember { mutableStateOf("") }
 PinInput(value = text.value, obscureText = null) {
@@ -29,6 +30,7 @@ PinInput(value = text.value, obscureText = null) {
 
 ### Bordered Pin View
 <img src="border.png" width="40%" />
+
 ```kotlin
 val text = remember { mutableStateOf("") }
 PinInput(
@@ -83,10 +85,6 @@ Give a ⭐️ if this project helped you!
     <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="Donation" width="160">
 </a>
 
-## ☑️ TODO
-
-- [x] Solid PIN View
-- [x] Bordered PIN View
 
 ## 📝 License
 
