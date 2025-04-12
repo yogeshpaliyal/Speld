@@ -11,7 +11,7 @@
 > Android Compose OTP/PIN View
 
 
-<img src="demo.png" width="30%" />
+<img src="demo.png" width="40%" />
 
 ## Implementation
 ```groovy
