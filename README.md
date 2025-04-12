@@ -15,10 +15,11 @@
 
 ## Implementation
 ```groovy
-implementation("com.yogeshpaliyal:speld:1.0.1")
+implementation("com.yogeshpaliyal:speld:1.0.3")
 ```
 
 ### Default / Solid Pin View
+<img src="solid-bg.png" width="40%" />
 ```kotlin
 val text = remember { mutableStateOf("") }
 PinInput(value = text.value, obscureText = null) {
@@ -27,6 +28,7 @@ PinInput(value = text.value, obscureText = null) {
 ```
 
 ### Bordered Pin View
+<img src="border.png" width="40%" />
 ```kotlin
 val text = remember { mutableStateOf("") }
 PinInput(
