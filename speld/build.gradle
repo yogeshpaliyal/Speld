@@ -37,11 +37,10 @@ android {
         compose true
     }
     namespace 'com.yogeshpaliyal.speld'
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-        }
-    }
+}
+
+afterEvaluate {
+    generateMetadataFileForMavenPublication.dependsOn androidSourcesJar
 }
 
 dependencies {
