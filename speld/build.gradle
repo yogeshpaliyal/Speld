@@ -39,9 +39,9 @@ android {
     namespace 'com.yogeshpaliyal.speld'
 }
 
-afterEvaluate {
-    generateMetadataFileForMavenPublication.dependsOn androidSourcesJar
-}
+//tasks.named("generateMetadataFileForMavenPublication") {
+//    dependsOn("androidSourcesJar")
+//}
 
 dependencies {
 
