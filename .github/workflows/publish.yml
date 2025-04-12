@@ -12,11 +12,11 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v2
-      - name: Set up JDK 11
+      - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
          distribution: adopt
-         java-version: 11
+         java-version: 17
 
       - name: Grant Gradlew rights
         run: chmod +x gradlew
@@ -29,10 +29,10 @@ jobs:
         run: |
           echo "Publishing library🚀"
           ./gradlew publish --no-daemon --no-parallel
-          echo "Published✅"
+          echo "Published ✅"
           echo "Releasing repository...🚀"
           ./gradlew closeAndReleaseRepository
-          echo "Released✅"
+          echo "Released ✅"
         env:
           ORG_GRADLE_PROJECT_VERSION_NAME: ${{ github.event.release.tag_name }}
           ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_KEY }}
